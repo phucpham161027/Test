@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Du Lịch Tiền Giang</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: arial , sans-serif ;
+        }
+
+        body {
+            background: #f5f5f5;
+        }
+
+        /* Header */
+        .header {
+            height: 100vh;
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), 
+                        url('https://2.bp.blogspot.com/-ffi1c4QQSeM/VbovJd_MeeI/AAAAAAAACA8/ZBzEzf6ebh4/s1600/nhung%2Bhinh%2Banh%2Bdep%2Bmine%2Btay%2Bkhien%2Bdu%2Bkhach%2Bngan%2Bngo_1.jpg');
+            background-size: cover;
+            background-attachment: fixed;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header-content {
+            text-align: center;
+            font-family:cursive ;
+            color: white;
+            animation: slideUp 1.5s ease;
+        }
+        .header-content h1 {
+    font-family: 'berkshire swash';font-size: 22px;
+    font-size: 3.5rem; 
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); 
+}
+        @keyframes slideUp {
+            0% { transform: translateY(100px); opacity: 0; }
+            100% { transform: translateY(0); opacity: 1; }
+        }
+
+        /* Navigation */
+        .nav-container {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(255,255,255,0.95);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .nav {
+            padding: 1rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #2c3e50;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #2c3e50;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #e74c3c;
+            transform: translateY(-2px);
+        }
+
+        /* Sections */
+        .section {
+            padding: 5rem 5%;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            position: relative;
+            color: #2c3e50;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 3px;
+            background: #e74c3c;
+        }
+
+        /* Activity Cards */
+        .activities-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .activity-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .activity-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+        }
+
+        .card-image {
+            height: 200px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .card-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: all 0.3s ease;
+        }
+
+        .activity-card:hover .card-image img {
+            transform: scale(1.1);
+        }
+
+        .card-content {
+            padding: 1.5rem;
+        }
+
+        .card-content h3 {
+            color: #2c3e50;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Gallery */
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+        }
+
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: all 0.3s ease;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.05);
+        }
+        .external-links {
+            text-align: center;
+            margin: 3rem 0;
+        }
+        .link-button {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background: #4955d8;
+            color: white;
+            text-decoration: none;
+            border-radius: 30px;
+            margin: 0 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .link-button:hover {
+            background: #0233a4;
+            transform: scale(1.05);
+        }
+          /* Contact Form */
+          .contact-form {
+            display: grid;
+            gap: 20px;
+            max-width: 600px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        input, textarea {
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            width: 100%;
+        }
+
+        button {
+            background-color: #0233a4;
+            color: white;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1.1em;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            background-color: #4955d8;
+        }
+        /* Footer */
+        .footer {
+            background: #2c3e50;
+            color: white;
+            padding: 3rem 5%;
+            text-align: center;
+        }
+
+        .scroll-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: #e74c3c;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            opacity: 0;
+            transition: all 0.3s ease;
+        }
+
+        .scroll-top.show {
+            opacity: 1;
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="nav-container">
+        <nav class="nav">
+            <div class="nav-logo">Tiền Giang Travel</div>
+            <div class="nav-links">
+                <a href="#home">Trang chủ</a>
+                <a href="#about">Giới thiệu</a>
+                <a href="#activities">Địa điểm Du lịch</a>
+                <a href="#gallery">Cảnh Đẹp </a>
+            </div>
+        </nav>
+    </div>
+
+    <header class="header" id="home">
+        <div class="header-content">
+            <h1 style="font-size: 3.5rem; margin-bottom: 1rem;">Khám Phá Tiền Giang</h1>
+            <p style="font-size: 1.2rem;">Vùng đất của sông nước miệt vườn</p>
+        </div>
+    </header>
+
+    <section class="section" id="about">
+        <h2 class="section-title">Giới thiệu</h2>
+        <p style="text-align: center; max-width: 800px; margin: 0 auto; line-height: 1.6;">
+            Tiền Giang là một tỉnh thuộc vùng Đồng bằng sông Cửu Long, nằm trở dài trên bờ bắc của sông Tiền. Miền Tây nổi tiếng với phong cảnh sông nước hữu tình, những vườn cây trái trĩu quả và nét văn hóa đặc trưng của người dân miền sông nước. Tiền Giang nằm ở vị trí trung tâm của khu vực Đồng bằng sông Cửu Long, có vai trò quan trọng trong giao thương và phát triển kinh tế của khu vực. Với lợi thế về vị trí địa lý, Tiền Giang không chỉ là một tỉnh nông nghiệp trù phú mà còn là điểm đến du lịch hấp dẫn.
+        </p>
+    </section>
+
+    <section class="section" id="activities">
+        <h2 class="section-title">Những Địa Diểm Du Lịch Nổi Tiếng</h2>
+        <div class="activities-container">
+            <div class="activity-card">
+                <div class="card-image">
+                    <img src="https://th.bing.com/th/id/R.dd5075f3fb88498e843b99c8bb849d7c?rik=imVXzZ1bCudcaw&pid=ImgRaw&r=0" alt="Chùa VĨnh Tràng" width="400" height="300">
+                </div>
+                <div class="card-content">
+                    <h3>Chùa Vĩnh Tràng</h3>
+                    <p><b>Địa chỉ:</b> ngay khu vực ngã 3 sông giao với Bến Tre và Vĩnh Long. Dọc theo cù lao Tân Phong. Thuộc trung tâm thị trấn Cái Bè.</p>
+                    <p><b>Giới thiệu chung:</b>Chùa Vĩnh Tràng, một trong những ngôi chùa nổi tiếng nhất ở Tiền Giang, không chỉ mang giá trị tâm linh mà còn là mẫu hình kiến trúc độc đáo.</p>
+                </div>
+            </div>
+            
+            <div class="activity-card">
+                <div class="card-image">
+                    <img src="https://booking.pystravel.vn/wp-content/uploads/2018/05/C---n-Th--.jpg" alt="Chợ nổi Cái Bè" width="400" height="300">
+                </div>
+                <div class="card-content">
+                    <h3>Chợ nổi Cái Bè</h3>
+                    <p><b>Địa chỉ:</b> ngay khu vực ngã 3 sông giao với Bến Tre và Vĩnh Long. Dọc theo cù lao Tân Phong. Thuộc trung tâm thị trấn Cái Bè.</p>
+                    <p><b>Giới thiệu chung:</b>Chợ nổi Cái Bè là một trong những chợ nổi lâu đời và nổi tiếng nhất miền Tây, nơi du khách có thể tận hưởng không gian thương mại sôi động ngay trên sông. </p>
+                </div>
+            </div>
+
+            <div class="activity-card">
+                <div class="card-image">
+                    <img src="https://phuotvivu.com/blog/wp-content/uploads/2021/09/cu-lao-thoi-son-tien-giang-1920x1280.jpg" alt="Khu du lịch Cù Lao Thới Sơn" width="400" height="300">
+                </div>
+                <div class="card-content">
+                    <h3>Khu du lịch Cù Lao Thới Sơn</h3>
+                    <p><b>Địa chỉ:</b>Khu du lịch Cù Lao Thới Sơn hay cồn Lân ở Ấp Thới Hòa, Xã Thới Sơn, Thành phố Mỹ Tho, Tỉnh Tiền Giang </p>
+                    <p><b>Giới thiệu chung:</b>Cù Lao Thới Sơn là một trong những địa điểm du lịch sinh thái hấp dẫn tại Tiền Giang, cách nội ô thành phố không xa.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" id="gallery">
+        <h2 class="section-title">Cảnh Đẹp Tiền Giang</h2>
+        <div class="gallery">
+            <div class="gallery-item">
+                <img src="https://en.normandie-tourisme.fr/wp-content/uploads/sites/3/2020/03/pont-de-normandie-laurent-6494-fotolia.com_.jpg" alt="Cảnh đẹp">
+            </div>
+            <div class="gallery-item">
+                <img src="https://th.bing.com/th/id/OIP.n7qf4-f8oar32FXnnfbcBwHaFj?rs=1&pid=ImgDetMain" alt="Văn hóa">
+            </div>
+            <div class="gallery-item">
+                <img src="https://th.bing.com/th/id/R.38d0868683d2e40d007382946fbba634?rik=WGR3lQKPB7O%2bRA&pid=ImgRaw&r=0" alt="Ẩm thực">
+            </div>
+            <div class="gallery-item">
+                <img src="https://statics.vinpearl.com/An-Giang_1661237066.jpg" alt="Làng nghề">
+            </div>
+        </div>
+        <div class="external-links">
+            <a href="https://tiengiang.gov.vn/" class="link-button" target="_blank">Trang Chủ Tỉnh</a>
+            <a href="https://www.traveloka.com/vi-vn/explore/destination/dia-diem-du-lich-tien-giang/124690" class="link-button" target="_blank">Hướng Dẫn Du Lịch</a>
+            <a href="https://www.foody.vn/tien-giang" class="link-button" target="_blank">Ẩm Thực Địa Phương</a>
+        </div>
+    </section>
+    <section id="contact">
+        <h2 class="section-title">Liên hệ tư vấn</h2>
+    <div class="contact-form">
+        <p style="font-size: 1.5rem;">Cảm ơn bạn đã gửi tin nhắn, chúng tôi sẽ phản hồi bạn trong thời gian sớm nhất!!!</p>
+    </div>
+    </section>
+</div>
+    <footer class="footer">
+        <p>© 2025 Tiền Giang Travel - All rights reserved</p>
+         <p>Liên hệ: 0868441207</p>
+        <p><b>Nhóm 2</b></p>
+        <p>Phạm Triệu Tấn Phúc</p>
+        <p>Trần Đặng Ngọc Tươi</p>
+        <p>Nguyễn Minh Triết</p>
+        <p>Nguyễn Khánh Huy</p>
+        <p>Lê Hoàng Duy</p>
+        <p>Lê nguyễn Quốc Nhân</p>
+        <p>Nguyễn Huỳnh Anh Thư</p>
+        <p>Trương Ngọc Khánh Phương</p>
+        <p>Nguyễn Thị Như Ý</p>
+        <p>Trần Thị Ngọc Mai</p>
+    </footer>
+
+    <div class="scroll-top" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
+        <i class="fas fa-arrow-up" style="color: white;"></i>
+    </div>
+
+    <script>
+        // Scroll to top button
+        window.addEventListener('scroll', () => {
+            const scrollTop = document.querySelector('.scroll-top');
+            if (window.scrollY > 300) {
+                scrollTop.classList.add('show');
+            } else {
+                scrollTop.classList.remove('show');
+            }
+        });
+
+        // Smooth scroll for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
